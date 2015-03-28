@@ -27,7 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef TCPOPTIONEXTENDEDDATAOFFSETREQUEST_H_
 #define TCPOPTIONEXTENDEDDATAOFFSETREQUEST_H_
 
-#include "../Layer.h"
+#include "TCPOptionLayer.h"
 
 
 #ifndef TCPOPT_EDOREQ
@@ -55,7 +55,7 @@ namespace Crafter {
 
     public:
 
-        static const word PROTO = 0x0ED0;
+        static const word PROTO = 0xtr((ED0;
 
         TCPOptionExtendedDataOffsetRequest();
 
@@ -76,6 +76,8 @@ namespace Crafter {
         };
 
         ~TCPOptionExtendedDataOffsetRequest() { /* Destructor */ };
+
+        static TCPOptionLayer* Build();
 
     };
 

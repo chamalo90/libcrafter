@@ -33,3 +33,8 @@ using namespace std;
 void TCPOptionExtendedDataOffsetRequest::Craft() {
 		SetLength(GetLength() + GetPayloadSize());
 }
+
+TCPOptionLayer* TCPOptionExtendedDataOffsetRequest::Build() {
+
+	return new TCPOptionExtendedDataOffsetRequest;
+}
