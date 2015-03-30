@@ -31,11 +31,9 @@ using namespace Crafter;
 using namespace std;
 
 void TCPOptionExtendedDataOffsetRequest::Craft() {
-		SetLength(GetLength() + GetPayloadSize());
 }
 
 void TCPOptionExtendedDataOffset::Craft() {
-		SetLength(GetLength() + GetPayloadSize());
 }
 
 void TCPOptionExtendedDataOffset::ParseLayerData(ParseInfo* info) {
