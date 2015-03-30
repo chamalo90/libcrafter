@@ -32,7 +32,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "TCPOptionWindowScale.h"
 #include "TCPOptionMPTCP.h"
 #include "TCPOptionExtendedDataOffset.h"
-#include "TCPOptionExtendedDataOffsetRequest.h"
 #include <netinet/tcp.h>
 
 using namespace Crafter;
@@ -69,11 +68,12 @@ TCPOptionLayer* TCPOptionLayer::Build(int opt, ParseInfo *info) {
 			break;
 		}
 	case TCPOPT_EDO:
-		return new TCPOptionExtendedDataOffset;
-		break;
-	case TCPOPT_EDOREQ:
-		return new TCPOptionExtendedDataOffsetRequest;
-		break;		
+		{
+			return new TCPOptionExtendedDataOffsetRequest;
+			//int subopt = (info->raw_data + info->offset)[2];
+			//return new TCPOptionExtendedDataOffset::Build(subopt);
+			//break;
+		}
 	}
 
 	/* Generic Option Header */

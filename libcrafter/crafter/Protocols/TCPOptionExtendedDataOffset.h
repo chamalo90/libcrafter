@@ -88,6 +88,51 @@ namespace Crafter {
 
         ~TCPOptionExtendedDataOffset() { /* Destructor */ };
 
+        static TCPOptionLayer* Build(int subopt);
+
+    };
+
+     class TCPOptionExtendedDataOffsetRequest: public TCPOptionLayer {
+
+        void DefineProtocol();
+
+        Constructor GetConstructor() const {
+            return TCPOptionExtendedDataOffsetRequest::TCPOptionExtendedDataOffsetRequestConstFunc;
+        };
+
+        static Layer* TCPOptionExtendedDataOffsetRequestConstFunc() {
+            return new TCPOptionExtendedDataOffsetRequest;
+        };
+
+        void Craft();
+
+        static const byte FieldKind = 0;
+        static const byte FieldLength = 1;
+
+    public:
+
+        static const word PROTO = 0x0ED0;
+
+        TCPOptionExtendedDataOffsetRequest();
+
+        void SetKind(const byte& value) {
+            SetFieldValue(FieldKind,value);
+        };
+
+        void SetLength(const byte& value) {
+            SetFieldValue(FieldLength,value);
+        };
+
+        byte  GetKind() const {
+            return GetFieldValue<byte>(FieldKind);
+        };
+
+        byte  GetLength() const {
+            return GetFieldValue<byte>(FieldLength);
+        };
+
+        ~TCPOptionExtendedDataOffsetRequest() { /* Destructor */ };
+
     };
 
 }

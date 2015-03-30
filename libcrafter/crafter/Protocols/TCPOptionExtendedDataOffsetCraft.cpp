@@ -30,10 +30,24 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using namespace Crafter;
 using namespace std;
 
-void TCPOptionExtendedDataOffset::Craft() {
+void TCPOptionExtendedDataOffsetRequest::Craft() {
+		SetLength(GetLength() + GetPayloadSize());
+}
 
+void TCPOptionExtendedDataOffset::Craft() {
+		SetLength(GetLength() + GetPayloadSize());
 }
 
 void TCPOptionExtendedDataOffset::ParseLayerData(ParseInfo* info) {
+}
+
+TCPOptionLayer* TCPOptionExtendedDataOffset::Build(int subopt) {
+
+  switch(subopt) {
+  case 0:
+    return new TCPOptionExtendedDataOffset;
+  case 1:
+    return new TCPOptionExtendedDataOffsetRequest;
+  }
 }
 
