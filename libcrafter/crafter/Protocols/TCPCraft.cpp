@@ -62,9 +62,9 @@ void TCP::Craft() {
 		if(top_layer) {
 			while( top_layer && ((top_layer->GetID() >> 8) == (TCPOption::PROTO >> 8))) {
 				option_length += top_layer->GetSize();
-				if(!top_layer->GetName().compare("TCPOptionExtendedDataOffset")){
+				/*if(!top_layer->GetName().compare("TCPOptionExtendedDataOffset")){
 					option_edo = (TCPOptionExtendedDataOffset*) top_layer;
-				}
+				}*/
 				top_layer = ((TCP *)top_layer)->GetTopLayer();
 			}
 		}
@@ -73,14 +73,14 @@ void TCP::Craft() {
 			PrintMessage(Crafter::PrintCodes::PrintWarning,
 					     "TCP::Craft()",
 				         "Option size is not padded to a multiple of 4 bytes.");
-		if(!option_edo){
+		//if(!option_edo){
 			SetDataOffset(5 + option_length/4); 	
-		}else{
+		//}else{
 			/* Check if AO Option (not added yet) */ 
 			/* Is a padding needed since EDO should be last option related by DataOffset*/
-			SetDataOffset(5 + 1);
-			option_edo->SetHeader_length(5 + option_length/4);
-		}
+		//	SetDataOffset(5 + 1);
+		//	option_edo->SetHeader_length(5 + option_length/4);
+		//}
 		
 		ResetField(FieldDataOffset);
 	}
