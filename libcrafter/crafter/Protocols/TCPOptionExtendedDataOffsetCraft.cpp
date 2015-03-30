@@ -43,9 +43,10 @@ TCPOptionLayer* TCPOptionExtendedDataOffset::Build(int subopt) {
 
   switch(subopt) {
   case 0:
-    return new TCPOptionExtendedDataOffset;
-  case 1:
     return new TCPOptionExtendedDataOffsetRequest;
+  default:
+    return new TCPOptionExtendedDataOffset;
+  
   }
 }
 
