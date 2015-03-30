@@ -59,6 +59,8 @@ TCPOptionExtendedDataOffsetRequest::TCPOptionExtendedDataOffsetRequest() {
     SetKind(TCPOPT_EDO);
     SetLength(2);
 
+    ResetFields();
+
 }
 
 void TCPOptionExtendedDataOffsetRequest::DefineProtocol() {
