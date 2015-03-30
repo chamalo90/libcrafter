@@ -58,7 +58,7 @@ namespace Crafter {
 
     public:
 
-        static const word PROTO = 0x0ED0;
+        static const word PROTO = 0x9006;
 
         TCPOptionExtendedDataOffset();
 
@@ -105,6 +105,9 @@ namespace Crafter {
         };
 
         void Craft();
+
+        //void ReDefineActiveFields();
+
 
         static const byte FieldKind = 0;
         static const byte FieldLength = 1;
